@@ -51,5 +51,4 @@ rake test
 
 
 ### Good to have
-It would have been very brilliant, if I was able to separate the frontend and backend architecture and use a frontend technology like angular and doing the front toa back communication using REST and JSON.
-
+It would have been very brilliant, if I was able to separate the frontend and backend architecture and follow the principles of single page application using  a frontend technology like angular and do the front to back communication using REST and JSON.
