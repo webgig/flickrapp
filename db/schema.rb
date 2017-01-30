@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128221406) do
+ActiveRecord::Schema.define(version: 20170129042738) do
+
+  create_table "recent_searches", force: :cascade do |t|
+    t.string   "keyword"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recent_searches", ["user_id"], name: "index_recent_searches_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -1,67 +1,24 @@
- <div class="row">
+<%= render 'images/search', :recent_search => recent_search  %>
 
-            <div class="col-lg-12">
-                <h1 class="page-header">Thumbnail Gallery</h1>
-            </div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Search Result for '<%=keyword%>'</h1>
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
+        <ul class="pager">
+            <% if current_page.to_i > 1 %>
+                <li class="previous"><a href="<%=search_path%>?keyword=<%=keyword%>&page=<%=(current_page.to_i - 1 )%>">Previous</a></li>
+            <% end %>
+                <li class="next"><a href="<%=search_path%>?keyword=<%=keyword%>&page=<%=(current_page.to_i + 1)%>">Next</a></li>
+        </ul>
+            
+    </div>
+
+    <% photos.each do |value| %>   
+        <div class="col-lg-2 thumb">    
+
+        <%= link_to(image_tag(value.url(:square), :class => 'thumbnail', :title => value.title, :border => 0, :size => '150X150'),  "/image/?title="+value.title+"&url="+ value.image_url("large")) %>
         </div>
+
+    <% end %>
+    
+</div>

@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
+  
   def new
   end
-  
 
   # Login action
   def login
     user = User.find_by(email: params[:session][:email].downcase)
+
     # Authenticate  the user
     if user && user.authenticate(params[:session][:password])
         # Log the user in and redirect the user to the main view.

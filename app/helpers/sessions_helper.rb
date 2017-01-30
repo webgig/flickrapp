@@ -21,4 +21,9 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def app_session 
+    unless logged_in?
+        redirect_to  "/login"
+    end        
+  end
 end

@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#login"
   delete '/logout', to: "sessions#logout"
   get '/search', to:  "images#search"
+  get '/image', to:  "images#view"
 
   resources :users
+  resources :images
   
   root 'home#index'
 end

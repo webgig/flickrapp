@@ -1,0 +1,23 @@
+
+<form method="GET" action="search">  
+  <div class="form-group">
+    <div class="row">
+	    <div class="col-xs-4">
+	      <label for="keyword">Please type the keyword in the box below</label>
+	      <input type="text" name="keyword" class="form-control" id="keyword">     
+	    </div> 
+  	</div>
+  </div>
+  <button type='submit' class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+</form>
+<% if !recent_search.nil? %>
+	<div style="height: 50px;padding: 10px 0px"> 
+	    <span style="float:left;width:auto;list-style-type: none">Recent Searches:- 
+		    <% recent_search.each do |r| %> 
+		         <%= link_to r.keyword, search_path+"?keyword="+r.keyword %> 
+		    <% end %>
+	    </span>
+	</div>
+<% end %>
+
+

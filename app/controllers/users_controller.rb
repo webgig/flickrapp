@@ -8,12 +8,13 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+  # Create new users
   def create
   	@user = User.new(user_params) 
     if @user.save
-      log_in @user
+      log_in @user # Log In the user upon Successfull Crration
     	flash[:success] = "Welcome to the Flickr Image Gallery!"
-      redirect_to "/home"
+      redirect_to "/home" # Redirect to the main page
     else
       render 'new'
     end
