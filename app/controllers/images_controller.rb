@@ -16,13 +16,17 @@ class ImagesController < ApplicationController
     	current_page = params[:page]
 
     	if current_page.blank?
-    	   current_page = 1
+    	   current_page = 1 # Default current page
     	end
 
 		# Initialize the Flickr Api
-		flickr = Flickr.new(File.join(Rails.root, 'config', 'flickr.yml'))
+		# The following DI mechanims has been user to inject dependency to make the code more testable. 
+		# We could inject a mock api class to avoid real api interaction during testing
+		flickr = get_flickr_api 
+
 		# Perform the photos search
 		photos = flickr.photos.search(:tags => params[:keyword],:per_page => Rails.configuration.x.flickr.per_page, :page => current_page)
+		photos.pages;
 		# Manage the recent search list
 		push_recent_search params[:keyword]
 			
